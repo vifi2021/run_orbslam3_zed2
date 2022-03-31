@@ -59,18 +59,21 @@ go to ORB-SLAM3/ directoy and run
 # V-I SLAM mode 
 
 7. copy left/ and right/ as left_stereo/ and right_stereo/, then run rename_ts_for_stereo.py
+	```
 	$ cd [dataset_dir_path]
 	$ cp -r left/ left_stereo/
 	$ cp -r right/ right_stereo # or mv right/ right_stereo/
 	$ cd ..
 	$ python3 rename_ts_for_stereo.py [dataset_dir_path]
+	```
 
 8. generate timestamp files
+	```
 	$ python3 get_left_timestamps.py [dataset_dir_path]
+	```
 
 9. if necessary, change the timestamp in the imu file so that no decimal exist.
 
-10. make sure imu timestamp starts ealier
 
 # run V-I mode following TUM-VI format (so far haven't succeed)
 <!-- Usage: ./stereo_inertial_tum_vi [path_to_vocabulary] [path_to_settings_ymal] [path_to_image_folder_1] [path_to_image_folder_2] [path_to_times_file_for_images] [path_to_imu_data(trajectory_file_name)]
