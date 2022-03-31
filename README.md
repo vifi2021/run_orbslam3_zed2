@@ -1,35 +1,59 @@
-# run_orbslam3_zed2
-notes on how to run orbslam3 on zed2 data (rgbd/stereo/stereo-inertial)
-
-
 # How to run ORB-SLAM3
+This is a notes on how to run orbslam3 with zed2 data
+supported mode:
+- RGBD
+- Stereo
+- Stereo-Inertial
 
+Data used:
+- Left camera frames
+- Right camera frames
+- IMU data (accelerometer + angular velocity)
 -----------------------------------------------------------------
+# Compile ORB-SLAM3
+following https://github.com/UZ-SLAMLab/ORB_SLAM3 for more details.
+For dependency, I use:
+- Pangolin
+- OpenCV 3.4 (with contrib module)
+- Eigen 3.3.9
+
+------------------------------------------------------------------
 # Visual SLAM mode (Same as ORB-SLAM2)
 Pipeline of creating myOwn dataset:
 
-1. record ZED svo and collect FTM (synchronized)
+1. record ZED2 svo, ZED2 imu (accelerometer + angular velocity) and collect FTM (ntp synchronized)
+	```
 	$ python3 record_svo_imu_multithread.py [dataset_dir_path]
+	```
 
 2. create a folder for your collected sequence 
+	```
 	$ cd ~/Documents/ORB-SLAM2/dataset/myOwn/
 	$ cd [dataset_dir_path] && mkdir depth left right && cd ..
+	```
 
 3. under myOwn/, extract left and right rgb and depth16 from svo buy running:
+	```
 	$ python3 export_svo_customized.py [svo file path] [dataset_dir_path]/left/ 4
+	```
 
 4. under myOwn/, associate depth and rgb by running:
+	```
 	$ python3 associate_rgb_depth.py [dataset_dir_path]
+	```
 	this will generate a associated txt file for left frames and depth images
 
 5. prepare the .yaml file like using the TUM or EuRoC format
 
-6. under ORB-SLAM3/ directoy: 
-	./Examples/RGB-D/rgbd_tum [Vocabulary/ORBvoc.txt] [dataset/myOwn/dir_of_your_yaml] [dataset/myOwn/created_dir/] [dataset/myOwn/dir_of_the_generated_associated.txt] 
-	
-in particular:
-./Examples/RGB-D/rgbd_tum  Vocabulary/ORBvoc.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/ymal_config_files/visual_only_rgbd_TUM_orbslam3.yaml /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_1/ /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_1/winlab_ftm_1_associated.txt
-
+6. To run rgbd mode:
+go to ORB-SLAM3/ directoy and run
+	```
+	$ ./Examples/RGB-D/rgbd_tum [Vocabulary/ORBvoc.txt] [dataset/myOwn/dir_of_your_yaml] [dataset/myOwn/created_dir/] [dataset/myOwn/dir_of_the_generated_associated.txt] 
+	```	
+	in particular:
+	```
+	$ ./Examples/RGB-D/rgbd_tum  Vocabulary/ORBvoc.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/ymal_config_files/visual_only_rgbd_TUM_orbslam3.yaml /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_1/ /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_1/winlab_ftm_1_associated.txt
+	```
 -----------------------------------------------------
 
 # V-I SLAM mode 
@@ -63,7 +87,7 @@ Usage: ./stereo_inertial_euroc [path_to_vocabulary] [path_to_settings] [path_to_
 ./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/ymal_config_files/EuRoC_vga.yaml /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try_vga/ /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try_vga/home_try_vga_left_timestamps.txt  
 
 
-# run Stereo-V-I mode following EuRoC format (This one works!)
+# run Stereo-V-I mode following EuRoC format
 Usage: ./stereo_inertial_euroc [path_to_vocabulary] [path_to_settings] [path_to_sequence_folder] [path_to_timestamp_file] [path_to_imu_file]
 
 run example:
