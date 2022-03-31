@@ -6,9 +6,10 @@ supported mode:
 - Stereo-Inertial
 
 Data used:
-- Left camera frames
-- Right camera frames
-- IMU data (accelerometer + angular velocity)
+- Left camera frames, VGA @ 30 fps
+- Right camera frames, VGA @ 30 fps
+- Depth map, VGA @ 30 fps
+- IMU data (accelerometer + angular velocity), 90 Hz
 -----------------------------------------------------------------
 # Compile ORB-SLAM3
 following https://github.com/UZ-SLAMLab/ORB_SLAM3 for more details.
