@@ -85,18 +85,29 @@ go to ORB-SLAM3/ directoy and run
 ./Examples/Stereo-Inertial/stereo_inertial_tum_vi Vocabulary/ORBvoc.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try/home_try_VI.yaml /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try/left_stereo /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try/right_stereo  /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try/home_try_left_timestamps.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try/imu_03_13_2022__16_02_48.txt -->
 
 # run Stereo mode following EuRoc format
-Usage: ./stereo_inertial_euroc [path_to_vocabulary] [path_to_settings] [path_to_sequence_folder] [path_to_timestamp_file]
-
-./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/ymal_config_files/EuRoC_vga.yaml /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try_vga/ /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try_vga/home_try_vga_left_timestamps.txt  
-
+Usage: 
+```
+$./stereo_inertial_euroc [path_to_vocabulary] [path_to_settings] [path_to_sequence_folder] [path_to_timestamp_file]
+```
+For example:
+```
+$ ./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/ymal_config_files/EuRoC_vga.yaml /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try_vga/ /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/home_try_vga/home_try_vga_left_timestamps.txt  
+```
 
 # run Stereo-V-I mode following EuRoC format
-Usage: ./stereo_inertial_euroc [path_to_vocabulary] [path_to_settings] [path_to_sequence_folder] [path_to_timestamp_file] [path_to_imu_file]
+Usage: 
+```
+$ ./stereo_inertial_euroc [path_to_vocabulary] [path_to_settings] [path_to_sequence_folder] [path_to_timestamp_file] [path_to_imu_file]
+```
 
-run example:
+For example:
+```
 ./Examples/Stereo-Inertial/stereo_inertial_euroc Vocabulary/ORBvoc.txt Examples/Stereo-Inertial/EuRoC.yaml /media/hans/T7/SLAM_data/EuRoc/MH_01_easy/ Examples/Stereo-Inertial/EuRoC_TimeStamps/MH01.txt 
+```
 
 run on my dataset:
 first comment the code,
 
-./Examples/Stereo-Inertial/stereo_inertial_euroc Vocabulary/ORBvoc.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/ymal_config_files/visual_imu_stereo_EuRoC_orbslam3.yaml /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_3/ /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_3/winlab_ftm_3_left_timestamps.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_3/imu_03_14_2022__12_05_26.txt 
+```
+$ ./Examples/Stereo-Inertial/stereo_inertial_euroc Vocabulary/ORBvoc.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/ymal_config_files/visual_imu_stereo_EuRoC_orbslam3.yaml /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_3/ /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_3/winlab_ftm_3_left_timestamps.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_3/imu_03_14_2022__12_05_26.txt 
+```
