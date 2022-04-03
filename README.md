@@ -1,5 +1,5 @@
 # Running ORB-SLAM3 with ZED2 RGBD+imu data
-This is a notes on how to run orbslam3 with zed2 data
+This is a memo on how to run orbslam3 with zed2 data
 supported mode:
 - RGBD
 - Stereo
