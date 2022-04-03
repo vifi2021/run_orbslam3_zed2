@@ -12,7 +12,7 @@ Data used:
 - IMU data (accelerometer + angular velocity), 90 Hz
 -----------------------------------------------------------------
 ## Compile ORB-SLAM3
-following https://github.com/UZ-SLAMLab/ORB_SLAM3 for more details.
+Follow https://github.com/UZ-SLAMLab/ORB_SLAM3 for more details.
 For dependency, I use:
 - Pangolin
 - OpenCV 3.4 (with contrib module)
