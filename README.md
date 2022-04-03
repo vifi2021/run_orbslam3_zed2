@@ -63,6 +63,51 @@ Notice: The Transformation from camera frame to imu frame (T_imu_cam) must be co
 
 -----------------------------------------------------
 
+## Necessary modifications on ORB-SLAM3's code
+
+There are several necessary modifications.
+- In ORB_SLAM3/Examples/Stereo/stereo_euroc.cc:73
+	```
+	// string pathCam0 = pathSeq + "/mav0/cam0/data";
+	// string pathCam1 = pathSeq + "/mav0/cam1/data";
+	// change to:
+	string pathCam0 = pathSeq + "/left_stereo";
+	string pathCam1 = pathSeq + "/right_stereo";
+	```
+- In ORB_SLAM3/Examples/Stereo-Inertial/stereo_inertial_euroc.cc:88
+	```
+	// string pathCam0 = pathSeq + "/mav0/cam0/data";
+	// string pathCam1 = pathSeq + "/mav0/cam1/data";
+	// string pathImu = pathSeq + "/mav0/imu0/data.csv";
+	// change to:
+	string pathCam0 = pathSeq + "/left_stereo";
+	string pathCam1 = pathSeq + "/right_stereo";
+	string pathImu(argv[(2*seq) + 5]);
+	```
+- In ORB_SLAM3/src/Optimizer.cc:3144 and 3118
+	```
+	// change to 
+	if(!pKFi->mpImuPreintegrated) {
+		std::cout << "Not preintegrated measurement" << std::endl;
+		continue;
+	}
+	```
+- In ORB_SLAM3/src/System.cc:318
+	```
+	// Sophus::SE3f Tcw = mpTracker->GrabImageStereo(imLeftToFeed,imRightToFeed,timestamp,filename);
+	// no need to rectify the image in the code, zed2 provided images that are already rectified. 
+	Sophus::SE3f Tcw = mpTracker->GrabImageStereo(imLeft,imRight,timestamp,filename);
+	```
+- In ORB_SLAM3/src/Tracking.cc: 607 and 1345
+	```
+	// mImuPer = 0.001; //1.0 / (double) mImuFreq;
+	// the imu period should be defined by the frequency in the yaml file
+	mImuPer = 1.0 / (double) mImuFreq;
+	```
+
+
+-----------------------------------------------------
+
 ## Run RGBD mode following TUM format:
 go to ORB-SLAM3/ directoy and run:
 ```
