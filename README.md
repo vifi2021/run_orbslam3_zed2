@@ -155,5 +155,5 @@ run on my dataset:
 first comment the code,
 
 ```
-$ ./Examples/Stereo-Inertial/stereo_inertial_euroc Vocabulary/ORBvoc.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/ymal_config_files/visual_imu_stereo_EuRoC_orbslam3.yaml /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_3/ /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_3/winlab_ftm_3_left_timestamps.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/winlab_ftm_3/imu_03_14_2022__12_05_26.txt 
+$ ./Examples/Stereo-Inertial/stereo_inertial_euroc Vocabulary/ORBvoc.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/ymal_config_files/EuRoC_vga.yaml /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/apartment_loop/ /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/apartment_loop/apartment_loop_left_timestamps.txt /media/hans/T7/SLAM_data/RAN_SLAM/myOwn/apartment_loop/imu_04_05_2022__20_18_55.txt 
 ```
