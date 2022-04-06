@@ -24,7 +24,7 @@ Pipeline of creating myOwn dataset:
 
 1. record ZED2 svo, ZED2 imu (accelerometer + angular velocity) and collect FTM (ntp synchronized)
 	```
-	$ python3 record_svo_imu_multithread.py [dataset_dir_path]
+	$ python3 svo_imu_recording_multithread.py [dataset_dir_path]
 	# a .svo file and .txt file will be stored to [dataset_dir_path]
 	```
 
