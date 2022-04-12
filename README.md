@@ -24,13 +24,13 @@ Pipeline of creating myOwn dataset:
 
 1. record ZED2 svo, ZED2 imu (accelerometer + angular velocity) and collect FTM (ntp synchronized)
 	```
+	$ cd ~/Documents/ORB-SLAM2/dataset/myOwn/
 	$ python3 svo_imu_recording_multithread.py [dataset_dir_path]
 	# a .svo file and .txt file will be stored to [dataset_dir_path]
 	```
 
 2. Extract left frame, right frame and depth map
 	```
-	$ cd ~/Documents/ORB-SLAM2/dataset/myOwn/ # create a folder for your collected sequence
 	$ cd [dataset_dir_path] && mkdir depth left right && cd ..
 	
 	# under myOwn/, extract left and right rgb and depth16 from svo buy running:
@@ -53,6 +53,11 @@ Pipeline of creating myOwn dataset:
 	# in ORB-SLAM3 Stereo/Stereo-Inertial mode, timestamps don't have decimals
 	$ python3 rename_ts_for_stereo.py [dataset_dir_path] 
 	$ python3 get_left_timestamps.py [dataset_dir_path]
+	```
+
+5. Optional, downsample the RGBD timestamps to lower frame rate
+	```
+	$ bash down_sample_ts.sh [downsample factor] [input_timestamp_txt] [output_timestamp_30/factor_txt] 
 	```
 -----------------------------------------------------
 
