@@ -1,6 +1,7 @@
 # Running ORB-SLAM3 with ZED2 RGBD+imu data
-This is a memo on how to run orbslam3 with zed2 data
-supported mode:
+This is a memo on how to run orbslam3 with data (images and IMU data) collected on ZED2 Camera.
+
+Supported mode:
 - RGBD
 - Stereo
 - Stereo-Inertial
